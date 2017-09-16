@@ -26,11 +26,12 @@ app.get('/webhook', function(req, res) {
 });
 
 app.post('/webhook', function (req, res) {
-  // console.log('Message received');
+  console.log('Message received');
   res.status(200).send();
   // return;
 
   var data = req.body;
+  console.log('Message received 2');
 
   // Make sure this is a page subscription
   if (data.object === 'page') {
@@ -39,13 +40,16 @@ app.post('/webhook', function (req, res) {
     data.entry.forEach(function(entry) {
       var pageID = entry.id;
       var timeOfEvent = entry.time;
+        console.log('Message received 3');
 
       // Iterate over each messaging event
       entry.messaging.forEach(function(event) {
         if (event.message) {
           receivedMessage(event);
+            console.log('Message received 4');
         } else {
           console.log("Webhook received unknown event: ", event);
+            console.log('Message received 5');
         }
       });
     });
