@@ -28,7 +28,7 @@ app.get('/webhook', function(req, res) {
 app.post('/webhook', function (req, res) {
   console.log('Message received');
   res.status(200).send();
-  // return;
+  return;
 
   var data = req.body;
   console.log('Message received 2');
