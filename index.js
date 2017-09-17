@@ -203,7 +203,7 @@ function test() {
               { entity: "blah", sentiment: "blah"},
               { entity: "blah", sentiment: "blah"}
   ];
-  var content = JSON.parse(fs.readFileSync(__dirname + "_name_.json", "utf8"));
+  var content = JSON.parse(fs.readFileSync(__dirname + "data.json", "utf8"));
   // for (var )
 }
 

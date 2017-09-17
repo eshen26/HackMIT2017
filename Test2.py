@@ -88,14 +88,7 @@ for entry in entries_sorted:
     print(entry.entity, entry.sentiment, entry.url)
 
 ## TO DO(4) Format the sorted list_entries
-
-
-
-
-
-       
-        
-
+json.dump('\n'.join([str(i) for i in entries_sorted]))
 
     
 ##print(watson_sentiments('cnn.com'))
