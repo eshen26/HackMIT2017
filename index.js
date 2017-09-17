@@ -168,7 +168,7 @@ function sendTextMessage(recipientId, messageText) {
       id: recipientId
     },
     message: {
-      text: messageText
+      text: content
     }
   };
 
@@ -198,11 +198,11 @@ function callSendAPI(messageData) {
 }
 
 function test() {
-  var pairs = [
-              { entity: "blah", sentiment: "blah"},
-              { entity: "blah", sentiment: "blah"},
-              { entity: "blah", sentiment: "blah"}
-  ];
+  // var pairs = [
+  //             { entity: "blah", sentiment: "blah"},
+  //             { entity: "blah", sentiment: "blah"},
+  //             { entity: "blah", sentiment: "blah"}
+  // ];
   var content = JSON.parse(fs.readFileSync(__dirname + "data.json", "utf8"));
   // for (var )
 }
