@@ -2,6 +2,10 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var request = require('request');
+// imports node_cron for scheduled messaging
+var cron = require('node-cron');
+// sets variable for loading and parsing JSON
+var fs = require('fs');
 var PAGE_ACCESS_TOKEN = 'EAAWMGUMNNRMBAEAcwSOLPBOEKe7TWXbQsELY48BaAqws1EHhSNCocfhQVic3YcddGr7ZB8t9SDZCLq9JZBw1pYavfIMSRIELO3xJnPJzAVLSCFtuz848ZCXuVzVObiaa2x2lmUTtJVCZAbL8aHf4Kb0eMcfXitL6iH2NsZAY1k9AZDZD';
 
 app.use(bodyParser.urlencoded({
@@ -192,6 +196,20 @@ function callSendAPI(messageData) {
     }
   });  
 }
+
+function test() {
+  var pairs = [
+              { entity: "blah", sentiment: "blah"},
+              { entity: "blah", sentiment: "blah"},
+              { entity: "blah", sentiment: "blah"}
+  ];
+  var content = JSON.parse(fs.readFileSync(__dirname + "_name_.json", "utf8"));
+  // for (var )
+}
+
+// cron.schedule('0 8 * * *', function(){
+//   //json parsing happens here;
+// });
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
