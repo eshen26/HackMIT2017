@@ -1,40 +1,16 @@
-# HackMIT2017
-# node-js-getting-started
+# Instant Digest
 
-A barebones Node.js app using [Express 4](http://expressjs.com/).
+# Inspiration
+As CS students interested in the Fintech industry, we regularly follow daily digest emails from major financial news sources. We are curious about how to combine sentiment analysis using NLP and available financial news on the internet. This prompted us to look into creating a messenger bot that automatically pushes stock trend analyses each morning.
 
-This application supports the [Getting Started with Node on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs) article - check it out.
+# What it does
+At this point in time the messenger bot is scheduled to send a ranking of stocks based on sentiment each morning at 8AM.
 
-## Running Locally
+# How we built it
+We used Heroku to setup the backend server with Node.js, which communicates with the Facebook Messenger API and creates the bot. Selinium is used to launch Chrome and acquire URLs from Google Finance, which then feeds the articles in to IBM Watson to perform sentiment analysis for every firm name that appears. Watson exports a list of firms corresponding to sentiment weights, and is then exported into a JSON file to feed back into Node.js. Node.js parses the JSON file and sends out the text.
 
-Make sure you have [Node.js](http://nodejs.org/) and the [Heroku CLI](https://cli.heroku.com/) installed.
+# Challenges we ran into
+It was our first time working with web development, so Node.js and even git was a big challenge. Development environment was a constant difficulty for us as well.
 
-```sh
-$ git clone git@github.com:heroku/node-js-getting-started.git # or clone your own fork
-$ cd node-js-getting-started
-$ npm install
-$ npm start
-```
-
-Your app should now be running on [localhost:5000](http://localhost:5000/).
-
-## Deploying to Heroku
-
-```
-$ heroku create
-$ git push heroku master
-$ heroku open
-```
-or
-
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
-
-## Documentation
-
-For more information about using Node.js on Heroku, see these Dev Center articles:
-
-- [Getting Started with Node.js on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
-- [Heroku Node.js Support](https://devcenter.heroku.com/articles/nodejs-support)
-- [Node.js on Heroku](https://devcenter.heroku.com/categories/nodejs)
-- [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices)
-- [Using WebSockets on Heroku with Node.js](https://devcenter.heroku.com/articles/node-websockets)
+# What's next for Instant Digest
+We are hoping to add interactive NLP features. For instance, when the user texts "Show me the best performing stocks today", Instant Digest will be able to return the Top 3 sentiments of the day.
