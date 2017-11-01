@@ -33,6 +33,7 @@ class Entry:
         self.sentiment = sentiment
         self.url = url
 
+## get the real url instead of the jump page
 def getPageUrl(elementLinks):
     extractLinks = []
     for element in elementLinks:
@@ -50,7 +51,6 @@ def getUrls():
     articleLinks.append(links)
 
     articleLinks = [y for x in articleLinks for y in x]
-    print(articleLinks)
     urls = []
     for link in articleLinks:
         r = requests.get(link)
@@ -62,10 +62,10 @@ def getUrls():
     print(urls)
     return urls
 
-##TO DO(1) load list_urls
+## load list_urls
 urls = getUrls()
 print(len(urls))
-# loads the list of responses, unprocessed
+# loads the list of unprocessed reponses
 entities = []
 sentiments = []
 for link in urls:
@@ -82,22 +82,10 @@ for i in range(len(entities)):
     entry = Entry(entities[i], sentiments[i],urls[i])
     entries.append(entry)
 
-## TO DO(3) sort list_entries in decending order of sentiments
+## sort list_entries in decending order of sentiments
 entries_sorted = sorted(entries, key=attrgetter('sentiment'), reverse=True)
-for entry in entries_sorted:
-    print(entry.entity, entry.sentiment, entry.url)
 
-## TO DO(4) Format the sorted list_entries
-json.dump('\n'.join([str(i) for i in entries_sorted]))
-
-    
-##print(watson_sentiments('cnn.com'))
-
-
-
-
-##entry_1 = entry('cnn.com')
-
-
-##print(json.dumps(response, indent=2))
+## Format the sorted list_entries
+with open('data.json', 'w') as outfile:
+    json.dump('\n'.join(([str(i) for i in entries_sorted])), outfile)
 
